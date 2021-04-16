@@ -1,19 +1,20 @@
-import React from 'react'
+import React, {useRef} from 'react'
 import {StyleSheet, View, TextInput} from 'react-native'
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'rgba 0,0,0,0.2'
+        backgroundColor: 'rgba(0,0,0,0.2)'
     },
     input: {
         backgroundColor: '#fff',
         fontSize: 18,
-        padding: '10',
+        padding: 10,
         borderRadius: 3
     }
 })
 
 const AddItem = ({onSubmitEditing, style, ...rest}) => {
+
    const input = useRef(null);
 
     return (
