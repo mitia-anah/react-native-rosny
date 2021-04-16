@@ -13,7 +13,7 @@ export const useCurrentList = () => {
     const [loading, setLoading] = useState(true) 
 
     const addItem = (text) => {
-        setList([{ id: uuid(), name: text }, ...list])
+        const newList= [{ id: uuid(), name: text }, ...list]
         setList(newList)
         updateStoredCurrentList(newList)
     }
