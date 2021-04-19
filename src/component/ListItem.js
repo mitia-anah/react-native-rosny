@@ -41,11 +41,18 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         padding: 20,
     },
-    rigthAction: {
+    rightAction: {
         flex: 1,
         backgroundColor: '#dd2c00',
         justifyContent: 'center',
         alignItems:'flex-end'
+    },
+    sectionContainer: {
+        backgroundColor: '#d3d3d3',
+        paddingVertical: 10,
+    },
+    sectionText: {
+        fontWeight: '600'
     }
 });
 export const Separator = () => <View style={styles.separator} />
@@ -71,12 +78,20 @@ const RightActions = (progress, dragX) => {
         extrapolate: 'clamp'
     })
     return (
-        <View style={styles.rigthtAction}>
+        <View style={styles.rightAction}>
             <Animated.Text style={[styles.actionText, {transform: [{scale}]}]}>Delete</Animated.Text>
         </View>
     )
-    
 }
+export const SectionHeader = ({title}) => {
+    return (
+        <View style={[styles.container, styles.sectionContainer]}>
+            <Text style={styles.sectionText}>{title}</Text>
+        </View>
+    )
+   
+}
+
 const ListItem = ({ name, onFavoritePress, isFavorite, onAddedSwipe, onDeleteSwipe, onRowpress }) => {
     let starIcon;
     if(isFavorite) {
