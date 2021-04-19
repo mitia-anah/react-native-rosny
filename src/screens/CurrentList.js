@@ -12,7 +12,7 @@ import {useCurrentList} from '../util/ListManager'
 //     AsyncStorage.setItem('@@GroceryList/currentList', JSON.stringify(list))
 // }
 
-export default () => {
+export default ({navigation}) => {
     const {list, loading, addItem, removeItem} = useCurrentList()
     // const [list, setList] = useState([])
     // const [loading, setLoading] = useState(true) 
@@ -60,13 +60,16 @@ export default () => {
             >
                 <FlatList 
                     data={list}
-                    renderItem={({ item, index }) => (
+                    renderItem={({ item, index }) => (  
                         <ListItem 
                             name={item.name}
                             onFavoritePress={() => alert('todo: handle favorite')}
                             isFavorite={index < 2}
                             onAddedSwipe={() => removeItem(item.id)}
                             onDeleteSwipe={() => removeItem(item.id)}
+                            onRowpress={() => {
+                                navigation.navigate('ItemDetails', {item})
+                            }}
                         />
                     )}
                     keyExtractor={(item) => item.id}
